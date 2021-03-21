@@ -1,7 +1,12 @@
 package com.blackdeath.metricas.service;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import java.util.List;
+import java.util.Optional;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +28,7 @@ public class CategoriaServiceTest {
 	private CategoriaService service;
 
 	@Test
-	public void guardarCategoria() {
+	public void guardar() {
 		Categoria categoria = new Categoria();
 		categoria.setNombre("Categoría Prueba");
 
@@ -34,4 +39,33 @@ public class CategoriaServiceTest {
 		assertTrue(categoriaGuardada.getId() > 0);
 	}
 
+	@Test
+	public void eliminar() {
+		Categoria categoria = new Categoria();
+		categoria.setNombre("Categoría Prueba Eliminar");
+
+		Categoria categoriaGuardada = service.guardar(categoria);
+
+		service.eliminar(categoriaGuardada.getId());
+
+		Optional<Categoria> categoriaBuscada = service.buscarPorId(categoriaGuardada.getId());
+
+		assertFalse(categoriaBuscada.isPresent());
+	}
+
+	@Test
+	public void buscarPorId() {
+		Categoria categoria = service.buscarPorId(1L).get();
+
+		assertNotNull(categoria);
+		assertEquals("Agilidad", categoria.getNombre());
+	}
+
+	@Test
+	public void buscarTodos() {
+		List<Categoria> categorias = service.buscarTodos();
+
+		assertNotNull(categorias);
+		assertTrue(categorias.size() > 0);
+	}
 }

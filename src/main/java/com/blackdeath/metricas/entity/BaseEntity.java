@@ -13,6 +13,4 @@ public interface BaseEntity<T extends Serializable> extends Serializable {
 
 	T getId();
 
-	void setId(T id);
-
 }

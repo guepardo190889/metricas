@@ -1,5 +1,6 @@
 package com.blackdeath.metricas.service;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -44,5 +45,20 @@ public class MetricaServiceTest {
 		assertNotNull(metrica);
 		assertNotNull(metrica.getId());
 		assertTrue(metrica.getId() > 0);
+	}
+
+	@Test
+	public void buscarPorId() {
+		Metrica metrica = service.buscarPorId(1L).get();
+
+		assertNotNull(metrica);
+		assertEquals("Tiempo de ciclo", metrica.getNombre());
+		assertEquals("Tiempo que transcurre desde el inicio de una historia hasta terminarla estando en producción",
+				metrica.getDescripcion());
+		assertEquals(Criterio.MENOS_ES_MEJOR, metrica.getCriterio());
+		assertEquals(TipoValor.TIEMPO, metrica.getTipoValor());
+		assertNotNull(metrica.getCategoria());
+		assertNotNull(metrica.getCategoria().getId());
+		assertEquals(1L, metrica.getCategoria().getId());
 	}
 }
