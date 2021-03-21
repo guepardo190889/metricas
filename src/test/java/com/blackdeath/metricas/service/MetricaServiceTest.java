@@ -30,13 +30,10 @@ public class MetricaServiceTest {
 
 	@Test
 	public void guardar() {
-		Categoria categoria = new Categoria();
-		categoria.setNombre("Categoría Uno");
-
-		categoria = categoriaService.guardar(categoria);
+		Categoria categoria = categoriaService.buscarPorId(1L).get();
 
 		Metrica metrica = new Metrica();
-		metrica.setNombre("Métrica Uno");
+		metrica.setNombre("Métrica Prueba");
 		metrica.setDescripcion("Descripción de la métrica uno");
 		metrica.setCriterio(Criterio.MAS_ES_MEJOR);
 		metrica.setTipoValor(TipoValor.CANTIDAD);
