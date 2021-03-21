@@ -59,6 +59,11 @@ public class CategoriaServiceTest {
 
 		assertNotNull(categoria);
 		assertEquals("Agilidad", categoria.getNombre());
+		
+		//Hibernate.initialize(categoria.getMetricas());
+		
+		assertNotNull(categoria.getMetricas());
+		assertTrue(categoria.getMetricas().size() > 0);
 	}
 
 	@Test

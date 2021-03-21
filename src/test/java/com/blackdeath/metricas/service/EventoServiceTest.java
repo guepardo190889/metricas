@@ -1,5 +1,6 @@
 package com.blackdeath.metricas.service;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -49,4 +50,13 @@ public class EventoServiceTest {
 		assertNotNull(eventoBuscado.get().getMetrica());
 		assertTrue(eventoBuscado.get().getMetrica().getId() > 0);
 	}
+	
+	@Test
+	public void buscarPorId() {
+		Evento evento = service.buscarPorId(1L).get();
+
+		assertNotNull(evento);
+		assertEquals("Agilidad", evento.getNombre());
+	}
+	
 }
