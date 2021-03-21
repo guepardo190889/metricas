@@ -10,7 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import com.blackdeath.metricas.entity.Categoria;
 
 /**
- * Clase con pruebas atumatizadas para {@link CategoriaService}
+ * Clase con pruebas automatizadas para {@link CategoriaService}
  * 
  * @author Seth Karim Luis Martínez
  * @since 20-03-2021

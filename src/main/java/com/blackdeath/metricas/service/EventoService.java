@@ -3,18 +3,19 @@ package com.blackdeath.metricas.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.blackdeath.metricas.entity.Categoria;
-import com.blackdeath.metricas.repository.CategoriaRepository;
+import com.blackdeath.metricas.entity.Evento;
+import com.blackdeath.metricas.repository.EventoRepository;
 
 /**
- * Servicio para {@link Categoria}
+ * 
+ * Servicio para {@link Evento}
  * 
  * @author Seth Karim Luis Martínez
- * @since 20-03-2020
+ * @since 21-03-2021
  *
  */
 @Service
-public class CategoriaService extends AbstractService<Categoria> {
+public class EventoService extends AbstractService<Evento> {
 
 	/**
 	 * Constructor que inyecta el repositorio de este servicio
@@ -22,7 +23,7 @@ public class CategoriaService extends AbstractService<Categoria> {
 	 * @param repository
 	 */
 	@Autowired
-	public CategoriaService(CategoriaRepository repository) {
+	public EventoService(EventoRepository repository) {
 		super(repository);
 	}
 
