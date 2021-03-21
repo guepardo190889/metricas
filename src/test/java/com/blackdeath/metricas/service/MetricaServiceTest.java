@@ -60,5 +60,6 @@ public class MetricaServiceTest {
 		assertNotNull(metrica.getCategoria());
 		assertNotNull(metrica.getCategoria().getId());
 		assertEquals(1L, metrica.getCategoria().getId());
+		assertNotNull(metrica.getEvento());
 	}
 }
