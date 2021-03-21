@@ -11,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import com.blackdeath.metricas.entity.Evento;
-import com.blackdeath.metricas.entity.Metrica;
 
 /**
  * Clase con pruebas automatizadas para {@link EventoService}
@@ -26,17 +25,11 @@ public class EventoServiceTest {
 	@Autowired
 	private EventoService service;
 
-	@Autowired
-	private MetricaService metricaService;
-
 	@Test
 	public void guardar() {
-		Metrica metrica = metricaService.buscarPorId(1L).get();
-
 		Evento evento = new Evento();
 		evento.setNombre("Evento Prueba");
-		evento.setMetrica(metrica);
-		
+
 		evento = service.guardar(evento);
 
 		assertNotNull(evento);
@@ -47,16 +40,14 @@ public class EventoServiceTest {
 
 		assertTrue(eventoBuscado.isPresent());
 		assertNotNull(eventoBuscado.get());
-		assertNotNull(eventoBuscado.get().getMetrica());
-		assertTrue(eventoBuscado.get().getMetrica().getId() > 0);
 	}
-	
+
 	@Test
 	public void buscarPorId() {
 		Evento evento = service.buscarPorId(1L).get();
 
 		assertNotNull(evento);
-		assertEquals("Agilidad", evento.getNombre());
+		assertEquals("Cierre de historia", evento.getNombre());
 	}
-	
+
 }

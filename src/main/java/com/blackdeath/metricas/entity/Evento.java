@@ -2,9 +2,6 @@ package com.blackdeath.metricas.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.ForeignKey;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -28,9 +25,5 @@ public class Evento extends AbstractEntity {
 	 */
 	@Column(unique = true, nullable = false, updatable = true, length = 128)
 	private String nombre;
-
-	@ManyToOne
-	@JoinColumn(name = "metrica_id", foreignKey = @ForeignKey(name = "metrica_id_fk"))
-	private Metrica metrica;
 
 }
