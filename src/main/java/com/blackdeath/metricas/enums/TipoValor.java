@@ -10,5 +10,5 @@ import com.blackdeath.metricas.entity.Metrica;
  *
  */
 public enum TipoValor {
-	PORCENTAJE, CANTIDAD, CALIFICACION_DIEZ, CALIFICACION_CIEN
+	PORCENTAJE, CANTIDAD, CALIFICACION, TIEMPO, BOOLEANO, EVALUACION
 }

@@ -25,7 +25,7 @@ public class CategoriaServiceTest {
 	@Test
 	public void guardarCategoria() {
 		Categoria categoria = new Categoria();
-		categoria.setNombre("Categoría 1");
+		categoria.setNombre("Categoría Uno");
 
 		Categoria categoriaGuardada = service.guardar(categoria);
 

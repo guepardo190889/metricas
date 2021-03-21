@@ -11,5 +11,5 @@ import com.blackdeath.metricas.entity.Metrica;
  *
  */
 public enum Criterio {
-	MAS_ES_MEJOR, MENOS_ES_MEJOR
+	MAS_ES_MEJOR, MENOS_ES_MEJOR, SI_CUMPLE
 }

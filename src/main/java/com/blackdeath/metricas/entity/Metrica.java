@@ -52,6 +52,9 @@ public class Metrica extends AbstractEntity {
 	@Enumerated(EnumType.STRING)
 	private TipoValor tipoValor;
 
+	/**
+	 * {@link Categoria} a la que pertence esta métrica
+	 */
 	@ManyToOne
 	@JoinColumn(name = "categoria_id", foreignKey = @ForeignKey(name = "categoria_id_fk"))
 	private Categoria categoria;
