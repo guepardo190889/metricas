@@ -32,38 +32,40 @@ public class Metrica extends AbstractEntity {
 	/**
 	 * Nombre de esta métrica
 	 */
-	@Column(unique = true, updatable = true, length = 128)
+	@Column(nullable = false, unique = true, updatable = true, length = 128)
 	private String nombre;
 
 	/**
 	 * Descripción detallada de esta métrica
 	 */
-	@Column(unique = false, updatable = true, length = 512)
+	@Column(nullable = false, unique = false, updatable = true, length = 512)
 	private String descripcion;
 
 	/**
 	 * Criterio específico por el que se evalúa esta métrica
 	 */
 	@Enumerated(EnumType.STRING)
+	@Column(nullable = false)
 	private Criterio criterio;
 
 	/**
 	 * Tipo de valor de esta métrica
 	 */
 	@Enumerated(EnumType.STRING)
+	@Column(nullable = false)
 	private TipoValor tipoValor;
 
 	/**
 	 * {@link Categoria} a la que pertence esta métrica
 	 */
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(optional = false, fetch = FetchType.EAGER)
 	@JoinColumn(name = "categoria_id", foreignKey = @ForeignKey(name = "categoria_id_fk"))
 	private Categoria categoria;
 
 	/**
 	 * {@link Evento} al que pertence esta métrica
 	 */
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(optional = false, fetch = FetchType.EAGER)
 	@JoinColumn(name = "evento_id", foreignKey = @ForeignKey(name = "evento_id_fk"))
 	private Evento evento;
 

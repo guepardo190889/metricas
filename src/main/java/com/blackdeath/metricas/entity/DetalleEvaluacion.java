@@ -1,5 +1,6 @@
 package com.blackdeath.metricas.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.ForeignKey;
@@ -26,26 +27,20 @@ public class DetalleEvaluacion extends AbstractEntity {
 	/**
 	 * Valor de la evaluación
 	 */
+	@Column(nullable = false)
 	private Integer valor;
 
 	/**
 	 * {@link Evaluacion} a la que pertenece este detalle de evaluación
 	 */
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(optional = false, fetch = FetchType.EAGER)
 	@JoinColumn(name = "evaluacion_id", foreignKey = @ForeignKey(name = "evaluacion_id_fk"))
 	private Evaluacion evaluacion;
 
 	/**
-	 * {@link Evento} que detonó el registro de este detalle de evaluación
-	 */
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "evento_id", foreignKey = @ForeignKey(name = "evento_id_fk"))
-	private Evento evento;
-
-	/**
 	 * {@link Metrica} de este detalle de evaluación
 	 */
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(optional = false, fetch = FetchType.EAGER)
 	@JoinColumn(name = "metrica_id", foreignKey = @ForeignKey(name = "metrica_id_fk"))
 	private Metrica metrica;
 

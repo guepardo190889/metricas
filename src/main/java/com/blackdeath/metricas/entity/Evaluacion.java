@@ -5,8 +5,12 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.ForeignKey;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.TemporalType;
 
@@ -36,7 +40,15 @@ public class Evaluacion extends AbstractEntity {
 	 * Fecha en la que se realiza esta evaluación;
 	 */
 	@Temporal(TemporalType.TIMESTAMP)
+	@Column(nullable = false)
 	private Date fecha;
+
+	/**
+	 * {@link Evento} que detona esta evaluación
+	 */
+	@ManyToOne(optional = false, fetch = FetchType.EAGER)
+	@JoinColumn(name = "evento_id", foreignKey = @ForeignKey(name = "evento_id_fk"))
+	private Evento evento;
 
 	/**
 	 * Colección de detalles que pertenecen a esta evaluación

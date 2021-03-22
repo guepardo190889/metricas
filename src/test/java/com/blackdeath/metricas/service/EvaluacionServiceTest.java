@@ -37,11 +37,11 @@ public class EvaluacionServiceTest {
 
 		Evaluacion evaluacion = new Evaluacion();
 		evaluacion.setFecha(new Date());
+		evaluacion.setEvento(evento);
 
 		DetalleEvaluacion detalle = new DetalleEvaluacion();
 		detalle.setValor(1);
 		detalle.setEvaluacion(evaluacion);
-		detalle.setEvento(evento);
 		detalle.setMetrica(evento.getMetricas().get(0));
 
 		List<DetalleEvaluacion> detalles = new ArrayList<>();

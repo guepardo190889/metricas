@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import com.blackdeath.metricas.entity.Categoria;
+import com.blackdeath.metricas.entity.Evento;
 import com.blackdeath.metricas.entity.Metrica;
 import com.blackdeath.metricas.enums.Criterio;
 import com.blackdeath.metricas.enums.TipoValor;
@@ -29,9 +30,14 @@ public class MetricaServiceTest {
 	@Autowired
 	private CategoriaService categoriaService;
 
+	@Autowired
+	private EventoService eventoService;
+
 	@Test
 	public void guardar() {
 		Categoria categoria = categoriaService.buscarPorId(1L).get();
+
+		Evento evento = eventoService.buscarPorId(1L).get();
 
 		Metrica metrica = new Metrica();
 		metrica.setNombre("Métrica Prueba");
@@ -39,6 +45,7 @@ public class MetricaServiceTest {
 		metrica.setCriterio(Criterio.MAS_ES_MEJOR);
 		metrica.setTipoValor(TipoValor.CANTIDAD);
 		metrica.setCategoria(categoria);
+		metrica.setEvento(evento);
 
 		metrica = service.guardar(metrica);
 
@@ -61,5 +68,7 @@ public class MetricaServiceTest {
 		assertNotNull(metrica.getCategoria().getId());
 		assertEquals(1L, metrica.getCategoria().getId());
 		assertNotNull(metrica.getEvento());
+		assertNotNull(metrica.getEvento().getId());
+		assertEquals(1L, metrica.getEvento().getId());
 	}
 }
