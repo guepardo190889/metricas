@@ -7,6 +7,7 @@ import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 
 import lombok.Getter;
+import lombok.Setter;
 
 /**
  * Clase de entidad abstracta
@@ -16,6 +17,7 @@ import lombok.Getter;
  *
  */
 @Getter
+@Setter
 @MappedSuperclass
 public abstract class AbstractEntity implements BaseEntity<Long> {
 
