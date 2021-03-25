@@ -33,6 +33,12 @@ public class CategoriaService extends AbstractService<Categoria> {
 		this.repository = repository;
 	}
 
+	/**
+	 * Devuelve una colección de {@link Categoria}s filtradas por {@code nombre}
+	 * 
+	 * @param nombre
+	 * @return
+	 */
 	public List<Categoria> buscarTodos(Optional<String> nombre) {
 		return repository.findAllByNombreIgnoreCaseContaining(nombre.orElse(""), Sort.by(Sort.Direction.ASC, "nombre"));
 	}

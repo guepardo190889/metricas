@@ -18,7 +18,7 @@ import com.blackdeath.metricas.entity.Categoria;
 public interface CategoriaRepository extends AbstractRepository<Categoria> {
 
 	/**
-	 * Devuelve un listao de todas las {@link Categoria} filtradas por
+	 * Devuelve un listado de todas las {@link Categoria} filtradas por
 	 * {@code nombre}
 	 * 
 	 * @param nombre
