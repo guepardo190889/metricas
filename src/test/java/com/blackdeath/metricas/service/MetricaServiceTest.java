@@ -4,9 +4,12 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.util.Optional;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Page;
 
 import com.blackdeath.metricas.entity.Categoria;
 import com.blackdeath.metricas.entity.Evento;
@@ -71,4 +74,35 @@ public class MetricaServiceTest {
 		assertNotNull(metrica.getEvento().getId());
 		assertEquals(1L, metrica.getEvento().getId());
 	}
+
+	@Test
+	public void buscarConPaginadoConNombreYPaginaNulos() {
+		Page<Metrica> paginado = service.buscarTodosConPaginado(4L, Optional.empty(), Optional.empty());
+
+		assertNotNull(paginado);
+		assertNotNull(paginado.getContent());
+		assertTrue(paginado.getContent().size() > 0);
+		assertEquals(10, paginado.getContent().size());
+	}
+
+	@Test
+	public void buscarConPaginadoPorNombreYPaginadoNulo() {
+		Page<Metrica> paginado = service.buscarTodosConPaginado(4L, Optional.of("ug"), Optional.empty());
+
+		assertNotNull(paginado);
+		assertNotNull(paginado.getContent());
+		assertTrue(paginado.getContent().size() > 0);
+		assertEquals(1, paginado.getContent().size());
+	}
+
+	@Test
+	public void buscarConPaginadoYPaginaEspcificada() {
+		Page<Metrica> paginado = service.buscarTodosConPaginado(4L, Optional.empty(), Optional.of(1));
+
+		assertNotNull(paginado);
+		assertNotNull(paginado.getContent());
+		assertTrue(paginado.getContent().size() > 0);
+		assertEquals(1, paginado.getContent().size());
+	}
+
 }

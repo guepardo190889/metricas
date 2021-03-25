@@ -68,4 +68,30 @@ public class CategoriaServiceTest {
 		assertNotNull(categorias);
 		assertTrue(categorias.size() > 0);
 	}
+
+	@Test
+	public void buscarTodosPorNombre() {
+		List<Categoria> categorias = service.buscarTodos(Optional.of("Agilidad"));
+
+		assertNotNull(categorias);
+		assertTrue(categorias.size() > 0);
+		assertEquals(1, categorias.size());
+	}
+	
+	@Test
+	public void buscarTodosPorNombreIgnoreCase() {
+		List<Categoria> categorias = service.buscarTodos(Optional.of("agilidad"));
+
+		assertNotNull(categorias);
+		assertTrue(categorias.size() > 0);
+		assertEquals(1, categorias.size());
+	}
+
+	@Test
+	public void buscarTodosPorNombreNulo() {
+		List<Categoria> categorias = service.buscarTodos(Optional.empty());
+
+		assertNotNull(categorias);
+		assertTrue(categorias.size() > 0);
+	}
 }

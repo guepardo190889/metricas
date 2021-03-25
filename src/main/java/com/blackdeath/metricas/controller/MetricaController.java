@@ -1,11 +1,11 @@
 package com.blackdeath.metricas.controller;
 
-import java.util.List;
+import java.util.Optional;
 
 import javax.validation.Valid;
-import javax.validation.constraints.Min;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,7 +18,6 @@ import com.blackdeath.metricas.controller.model.MetricaModel;
 import com.blackdeath.metricas.entity.Categoria;
 import com.blackdeath.metricas.entity.Metrica;
 import com.blackdeath.metricas.service.MetricaService;
-import com.sun.istack.NotNull;
 
 /**
  * Controlador para {@link Metrica}
@@ -29,7 +28,7 @@ import com.sun.istack.NotNull;
  */
 @RestController
 @RequestMapping("/metricas")
-public class MetricaController extends AbstractController<Metrica> {
+public class MetricaController {
 
 	@Autowired
 	private MetricaService service;
@@ -46,26 +45,18 @@ public class MetricaController extends AbstractController<Metrica> {
 	}
 
 	/**
-	 * Devuelve un {@link List} con todas las {@link Metrica}
-	 * 
-	 * @return
-	 */
-	@GetMapping
-	public ResponseEntity<List<Metrica>> buscarTodos() {
-		return ResponseEntity.ok(service.buscarTodos());
-	}
-
-	/**
-	 * Devuelve un listado de todas las {@link Metrica} filtradas por
-	 * {@link Categoria} mediante {@code idCategoria}
+	 * Consulta filtrada y paginada de {@link Metrica}
 	 * 
 	 * @param idCategoria
-	 * @return
+	 * @param nombre
+	 * @param pagina
+	 * @return Page<Metrica>
 	 */
 	@GetMapping
-	public ResponseEntity<List<Metrica>> buscarPorCategoria(
-			@Valid @NotNull @Min(1) @RequestParam(name = "idCategoria") Long idCategoria) {
-		return ResponseEntity.ok(service.buscarTodosPorCategoria(idCategoria));
+	public Page<Metrica> buscarTodosConPaginado(@RequestParam(required = true) Long idCategoria,
+			@RequestParam(required = false) Optional<String> nombre,
+			@RequestParam(required = false) Optional<Integer> pagina) {
+		return service.buscarTodosConPaginado(idCategoria, nombre, pagina);
 	}
 
 }

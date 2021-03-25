@@ -16,6 +16,7 @@ import com.blackdeath.metricas.enums.TipoValor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 /**
  * Entidad que representa un elemento específico que se puede evaluar
@@ -27,6 +28,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
+@ToString
 @Entity
 public class Metrica extends AbstractEntity {
 
