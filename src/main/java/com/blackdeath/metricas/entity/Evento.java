@@ -9,9 +9,6 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
-
 import lombok.Getter;
 import lombok.Setter;
 
@@ -39,7 +36,6 @@ public class Evento extends AbstractEntity {
 	 * Colección de métricas que que se deben evaluar en este evento
 	 */
 	@OneToMany(mappedBy = "evento", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
-	@Fetch(FetchMode.SUBSELECT)
 	private List<Metrica> metricas = new ArrayList<>();
 
 	/**

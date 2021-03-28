@@ -30,7 +30,7 @@ public class EvaluacionServiceTest {
 	@Autowired
 	EventoService eventoService;
 
-	@Test
+	/*@Test
 	public void guardar() {
 		Evento evento = eventoService.buscarPorId(1L).get();
 
@@ -84,5 +84,5 @@ public class EvaluacionServiceTest {
 		assertNotNull(evaluacionBuscada);
 		assertNotNull(evaluacionBuscada.getDetalles());
 		assertTrue(evaluacionBuscada.getDetalles().size() > 0);
-	}
+	}*/
 }

@@ -27,7 +27,7 @@ public interface MetricaRepository extends AbstractRepository<Metrica> {
 	 * @param idCategoria
 	 * @return
 	 */
-	public List<Metrica> findAllByCategoria(Long idCategoria);
+	List<Metrica> findAllByCategoria(Long idCategoria);
 
 	/**
 	 * Devuelve un listado de todas las {@link Metrica} filtradas por {@code nombre}

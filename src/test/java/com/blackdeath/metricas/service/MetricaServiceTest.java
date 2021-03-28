@@ -17,6 +17,9 @@ import com.blackdeath.metricas.entity.Metrica;
 import com.blackdeath.metricas.enums.Criterio;
 import com.blackdeath.metricas.enums.TipoValor;
 
+import lombok.extern.log4j.Log4j;
+
+
 /**
  * Clase con pruebas automatizadas para {@link MetricaService}
  * 
@@ -24,6 +27,7 @@ import com.blackdeath.metricas.enums.TipoValor;
  * @since 21-03-2021
  *
  */
+@Log4j
 @SpringBootTest
 public class MetricaServiceTest {
 
@@ -61,6 +65,7 @@ public class MetricaServiceTest {
 	public void buscarPorId() {
 		Metrica metrica = service.buscarPorId(1L).get();
 
+		
 		assertNotNull(metrica);
 		assertEquals("Tiempo de ciclo", metrica.getNombre());
 		assertEquals("Tiempo que transcurre desde el inicio de una historia hasta terminarla estando en producción",

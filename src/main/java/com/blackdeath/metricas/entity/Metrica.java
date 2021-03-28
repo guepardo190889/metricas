@@ -63,14 +63,14 @@ public class Metrica extends AbstractEntity {
 	/**
 	 * {@link Categoria} a la que pertence esta métrica
 	 */
-	@ManyToOne(optional = false, fetch = FetchType.EAGER)
+	@ManyToOne(optional = false, fetch = FetchType.LAZY)
 	@JoinColumn(name = "categoria_id", foreignKey = @ForeignKey(name = "categoria_id_fk"))
 	private Categoria categoria;
 
 	/**
 	 * {@link Evento} al que pertence esta métrica
 	 */
-	@ManyToOne(optional = false, fetch = FetchType.EAGER)
+	@ManyToOne(optional = false, fetch = FetchType.LAZY)
 	@JoinColumn(name = "evento_id", foreignKey = @ForeignKey(name = "evento_id_fk"))
 	private Evento evento;
 
