@@ -10,41 +10,42 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.blackdeath.metricas.entity.Evento;
-import com.blackdeath.metricas.service.EventoService;
+import com.blackdeath.metricas.entity.Persona;
+import com.blackdeath.metricas.service.PersonaService;
 
 /**
- * Controador para {@link Evento}
+ * Controlador para {@link Persona}
  * 
  * @author Seth Karim Luis Martínez
- * @since 25-03-2021
+ * @since 29-03-2021
  *
  */
 @RestController
-@RequestMapping("/eventos")
-public class EventoController {
+@RequestMapping("/personas")
+public class PersonaController {
 
 	@Autowired
-	private EventoService service;
+	private PersonaService service;
 
 	/**
-	 * Devuelve un {@link Evento} por su identificador único
+	 * Devuelve un {@link Persona} por su identificador único
 	 * 
 	 * @param id
 	 * @return
 	 */
 	@GetMapping("/{id}")
-	public Evento buscarPorId(@PathVariable Long id) {
+	public Persona buscarPorId(@PathVariable Long id) {
 		return service.buscarPorId(id).get();
 	}
 
 	/**
-	 * Devuelve un listado de {@link Evento}s filtrados por {@code nombre}
+	 * Devuelve un listado de {@link Persona}s filtradas por {@code nombre}
 	 * 
+	 * @param nombre
 	 * @return
 	 */
 	@GetMapping
-	public List<Evento> buscarTodos(@RequestParam(required = false) Optional<String> nombre) {
+	public List<Persona> buscarTodos(@RequestParam(required = false) Optional<String> nombre) {
 		return service.buscarTodos(nombre);
 	}
 
