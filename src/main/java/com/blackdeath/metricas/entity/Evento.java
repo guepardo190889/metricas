@@ -7,10 +7,12 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 /**
  * Entidad que representa un suceso que detona una {@link Evaluacion}
@@ -21,6 +23,7 @@ import lombok.Setter;
  */
 @Setter
 @Getter
+@ToString
 @Entity
 public class Evento extends AbstractEntity {
 
@@ -35,7 +38,8 @@ public class Evento extends AbstractEntity {
 	/**
 	 * Colección de métricas que que se deben evaluar en este evento
 	 */
-	@OneToMany(mappedBy = "evento", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+	@JoinColumn(name = "evento_id")
 	private List<Metrica> metricas = new ArrayList<>();
 
 	/**
@@ -44,7 +48,6 @@ public class Evento extends AbstractEntity {
 	 * @param metrica
 	 */
 	public void agregarMetrica(Metrica metrica) {
-		metrica.setEvento(this);
 		metricas.add(metrica);
 	}
 }

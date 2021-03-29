@@ -9,9 +9,9 @@ import javax.persistence.ForeignKey;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-import com.blackdeath.metricas.controller.model.MetricaModel;
 import com.blackdeath.metricas.enums.Criterio;
 import com.blackdeath.metricas.enums.TipoValor;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -63,37 +63,9 @@ public class Metrica extends AbstractEntity {
 	/**
 	 * {@link Categoria} a la que pertence esta métrica
 	 */
+	@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 	@ManyToOne(optional = false, fetch = FetchType.LAZY)
 	@JoinColumn(name = "categoria_id", foreignKey = @ForeignKey(name = "categoria_id_fk"))
 	private Categoria categoria;
-
-	/**
-	 * {@link Evento} al que pertence esta métrica
-	 */
-	@ManyToOne(optional = false, fetch = FetchType.LAZY)
-	@JoinColumn(name = "evento_id", foreignKey = @ForeignKey(name = "evento_id_fk"))
-	private Evento evento;
-
-	/**
-	 * Constructor que asigna el valor de los campos de esta métrica a partir de una
-	 * {@link MetricaModel}
-	 * 
-	 * @param metrica
-	 */
-	public Metrica(MetricaModel metrica) {
-		this.nombre = metrica.getNombre();
-		this.descripcion = metrica.getDescripcion();
-		this.criterio = metrica.getCriterio();
-		this.tipoValor = metrica.getTipoValor();
-
-		Categoria categoria = new Categoria();
-		categoria.setId(metrica.getIdCategoria());
-
-		Evento evento = new Evento();
-		evento.setId(metrica.getIdEvento());
-
-		this.categoria = categoria;
-		this.evento = evento;
-	}
 
 }
