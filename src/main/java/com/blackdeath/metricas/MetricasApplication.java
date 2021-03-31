@@ -25,6 +25,13 @@ public class MetricasApplication {
 		SpringApplication.run(MetricasApplication.class, args);
 	}
 
+	/**
+	 * Bean que previene error por CORS Policy
+	 * <p>
+	 * https://yoandroide.xyz/configuracion-de-cors-en-un-proyecto-spring-boot/
+	 * 
+	 * @return
+	 */
 	@Bean
 	public WebMvcConfigurer corsConfigurer() {
 		return new WebMvcConfigurer() {
