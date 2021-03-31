@@ -195,7 +195,7 @@ values (
 insert into persona (
 	nombre, apellido_paterno, apellido_materno)
 values (
-	'Valeria Scarlett', 'Villarreal', 'Sámano');
+	'Valeria Scarlett', 'Villarreal', 'Moreno');
 
 insert into persona (
 	nombre, apellido_paterno, apellido_materno)
